@@ -1,0 +1,92 @@
+/**
+ * common gradle configuration used on app gradle modules
+ **/
+
+/** gradle Variables **/
+//app version
+def versionMajor = 0
+def versionMinor = 0
+def versionPatch = 1
+
+def gradleVersionCode = versionMajor * 10000 + versionMinor * 1000 + versionPatch
+def gradleVersionName = "$versionMajor.$versionMinor.$versionPatch"
+
+//compile sdk
+def gradleCompileSdk = 31
+def gradleMinSdk = 21
+def gradleTargetSdk = gradleCompileSdk
+
+def gradleApplicationId = "com.felipersn.clean.architecture"
+def gradleTestInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+android {
+    compileSdk gradleCompileSdk
+
+    defaultConfig {
+        /** add ApplicationId only in application module **/
+        if (this.name == "app") applicationId gradleApplicationId
+        minSdk gradleMinSdk
+        targetSdk gradleTargetSdk
+        versionCode gradleVersionCode
+        versionName gradleVersionName
+
+        testInstrumentationRunner gradleTestInstrumentationRunner
+
+        /** enable vector drawables **/
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    /** buildTypes **/
+    buildTypes {
+        release {
+            /** Set the minify, shrink and proguard configuration only in application module **/
+            if (this.name == "app") {
+                minifyEnabled true
+                shrinkResources true
+
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+                //signingConfig signingConfigs.keyStoreInfo
+            }
+
+            /** Enable/Disable crashlytics **/
+            //manifestPlaceholders = [crashlyticsEnabled: true]
+        }
+
+        debug {
+            /** optimize build time **/
+            ext.alwaysUpdateBuildId = false
+
+            /** Enable/Disable crashlytics **/
+            //manifestPlaceholders = [crashlyticsEnabled: false]
+        }
+    }
+
+    /** Enable and configure Java 1.8 **/
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+        useIR = true
+    }
+
+    /** Enable and configure Jetpack Compose **/
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
+
+    /** packaging Options **/
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+}
