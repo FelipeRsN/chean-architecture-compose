@@ -1,6 +1,5 @@
 package com.felipersn.clean.domain.model
 
-import com.felipersn.clean.data.remote.dto.TeamMember
 
 data class CoinDetail(
     val coinId: String?,

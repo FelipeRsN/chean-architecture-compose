@@ -2,7 +2,7 @@ package com.felipersn.clean.domain.usecases.get_coin_list
 
 import com.felipersn.clean.core.common.Exceptions
 import com.felipersn.clean.core.common.Resource
-import com.felipersn.clean.data.remote.dto.toCoin
+import com.felipersn.clean.domain.mapper.toCoin
 import com.felipersn.clean.domain.model.Coin
 import com.felipersn.clean.domain.repository.CoinRepository
 import kotlinx.coroutines.flow.Flow

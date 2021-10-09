@@ -6,6 +6,5 @@ plugins {
 apply from: "../common.gradle"
 
 dependencies {
-    implementation project(":data")
-    api project(":core")
+    api project(":data:network")
 }

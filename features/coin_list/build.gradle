@@ -1,0 +1,10 @@
+plugins {
+    id 'com.android.dynamic-feature'
+    id 'kotlin-android'
+}
+
+apply from: "../../common.gradle"
+
+dependencies {
+    implementation project(":app")
+}

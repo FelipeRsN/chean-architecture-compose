@@ -1,4 +1,4 @@
 <resources>
     <string name="exception_http">An unexpected error. Try again.</string>
-    <string name="exception_server">Couldn't reach server. Check your internet connection and try again.</string>
+    <string name="exception_server">Couldn\'t reach server. Check your internet connection and try again.</string>
 </resources>

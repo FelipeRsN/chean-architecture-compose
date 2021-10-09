@@ -6,7 +6,6 @@ plugins {
 apply from: "../common.gradle"
 
 dependencies {
-
     /** Android and kotlin implementation **/
     api "androidx.core:core-ktx:$ktx_version"
     api "androidx.appcompat:appcompat:$appCompat_version"

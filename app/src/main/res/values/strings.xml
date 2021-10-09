@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">clean_architecture_compose</string>
+    <string name="title_coin_detail">Coin Detail</string>
+    <string name="title_coin_list">Coin List</string>
 </resources>

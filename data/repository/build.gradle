@@ -1,0 +1,11 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+apply from: "../../common.gradle"
+
+dependencies {
+    implementation project(":domain")
+    api project(":data:cache")
+}
