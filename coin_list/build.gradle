@@ -7,5 +7,5 @@ apply from: "../common.gradle"
 
 dependencies {
     implementation project(":data")
-    api project(":core")
+    implementation project(":domain")
 }

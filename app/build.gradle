@@ -6,6 +6,9 @@ plugins {
 apply from: "../common.gradle"
 
 dependencies {
-    implementation project(":core")
+    implementation project(":coin_list")
+    implementation project(":coin_detail")
+    implementation project(":data")
     implementation project(":domain")
+    implementation project(":core")
 }
