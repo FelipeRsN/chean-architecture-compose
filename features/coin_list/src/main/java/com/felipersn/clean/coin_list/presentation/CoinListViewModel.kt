@@ -26,11 +26,11 @@ class CoinListViewModel(
                 is Resource.Success -> {
                     _state.value = CoinListState(coins = result.data ?: emptyList())
                 }
-                is Resource.Error -> {
-                    _state.value = CoinListState(error = result.exception)
-                }
                 is Resource.Loading -> {
                     _state.value = CoinListState(isLoading = true)
+                }
+                is Resource.Error -> {
+                    _state.value = CoinListState(error = result.exception)
                 }
             }
         }.launchIn(viewModelScope)

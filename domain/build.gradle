@@ -7,4 +7,5 @@ apply from: "../common.gradle"
 
 dependencies {
     api project(":data:network")
+    api project(":data:cache")
 }

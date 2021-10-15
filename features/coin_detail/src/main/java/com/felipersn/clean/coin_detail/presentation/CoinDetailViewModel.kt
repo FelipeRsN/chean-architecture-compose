@@ -31,11 +31,11 @@ class CoinDetailViewModel(
                 is Resource.Success -> {
                     _state.value = CoinDetailState(coin = result.data)
                 }
-                is Resource.Error -> {
-                    _state.value = CoinDetailState(error = result.exception)
-                }
                 is Resource.Loading -> {
                     _state.value = CoinDetailState(isLoading = true)
+                }
+                is Resource.Error -> {
+                    _state.value = CoinDetailState(error = result.exception)
                 }
             }
         }.launchIn(viewModelScope)

@@ -7,5 +7,4 @@ apply from: "../../common.gradle"
 
 dependencies {
     implementation project(":domain")
-    api project(":data:cache")
 }
