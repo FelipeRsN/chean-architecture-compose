@@ -15,6 +15,8 @@ buildscript {
         /** compose Version **/
         compose_version = '1.1.0-alpha05'
         activityCompose_version = '1.4.0-beta01'
+        navComposeVersion = '2.4.0-alpha10'
+        accompanistVersion = '0.20.0'
 
         /** Coroutines Version **/
         coroutines_version = "1.5.1"

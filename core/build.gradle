@@ -17,6 +17,8 @@ dependencies {
     api "androidx.compose.material:material:$compose_version"
     api "androidx.compose.ui:ui-tooling-preview:$compose_version"
     api "androidx.activity:activity-compose:$activityCompose_version"
+    api "androidx.navigation:navigation-compose:$navComposeVersion"
+    api "com.google.accompanist:accompanist-flowlayout:$accompanistVersion"
 
     /** Coroutines dependencies **/
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
@@ -32,6 +34,7 @@ dependencies {
 
     /** Dependency injection dependencies **/
     api "io.insert-koin:koin-android:$koin_version"
+    api "io.insert-koin:koin-androidx-compose:$koin_version"
 
     /** Test dependencies **/
     // JUnit
