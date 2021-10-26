@@ -13,13 +13,13 @@ buildscript {
         lifeCycle_version = '2.3.1'
 
         /** compose Version **/
-        compose_version = '1.1.0-alpha05'
-        activityCompose_version = '1.4.0-beta01'
+        compose_version = '1.1.0-alpha06'
+        activityCompose_version = '1.4.0-rc01'
         navComposeVersion = '2.4.0-alpha10'
         accompanistVersion = '0.20.0'
 
         /** Coroutines Version **/
-        coroutines_version = "1.5.1"
+        coroutines_version = "1.5.2"
         coroutinesCore_version = "1.4.1"
 
         /** Retrofit and Gson Version **/

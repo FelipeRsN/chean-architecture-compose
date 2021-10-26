@@ -6,5 +6,6 @@ plugins {
 apply from: "../../common.gradle"
 
 dependencies {
-    api project(":core")
+    /** core **/
+    implementation project(":core")
 }

@@ -78,7 +78,6 @@ data class TagDto(
     val name: String? = ""
 )
 
-
 data class WhitepaperDto(
     val link: String? = "",
     val thumbnail: String? = ""

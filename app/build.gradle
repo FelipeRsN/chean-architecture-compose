@@ -5,12 +5,20 @@ plugins {
 
 apply from: "../common.gradle"
 
-android {
-    dynamicFeatures = [':features:coin_detail', ':features:coin_list']
-}
-
-
 dependencies {
-    api project(":domain")
+    /** Features **/
+    implementation project(":features:coin_detail")
+    implementation project(":features:coin_list")
+
+    /** domain **/
+    implementation project(":domain")
+
+    /** data **/
     api project(":data:repository")
+    api project(":data:network")
+    api project(":data:cache")
+
+    /** core **/
+    api project(":navigation")
+    api project(":core")
 }
