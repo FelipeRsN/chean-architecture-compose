@@ -1,12 +1,11 @@
 package com.felipersn.clean.navigation
 
-import com.felipersn.clean.navigation.navigators.FeatureDirections.root
-import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.MutableSharedFlow
 
-class NavigationManager {
-    var commands = MutableStateFlow(root)
+object NavigationManager {
+    var navigationTrigger = MutableSharedFlow<String>()
 
-    fun navigate(directions: NavigationCommand) {
-        commands.value = directions
+    suspend fun navigateTo(directions: String) {
+        navigationTrigger.emit(directions)
     }
 }

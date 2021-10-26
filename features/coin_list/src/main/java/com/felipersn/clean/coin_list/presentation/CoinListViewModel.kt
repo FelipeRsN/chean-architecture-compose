@@ -6,10 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.felipersn.clean.core.common.Resource
 import com.felipersn.clean.domain.usecases.get_coin_list.GetCoinListUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
 
-class CoinListViewModel(
+@HiltViewModel
+class CoinListViewModel @Inject constructor(
     private val getCoinListUseCase: GetCoinListUseCase
 ) : ViewModel() {
 

@@ -1,14 +1,11 @@
 package com.felipersn.clean.architecture
 
 import android.app.Application
-import com.felipersn.clean.core.di.remoteModule
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
-import org.koin.core.context.startKoin
-import org.koin.core.logger.Level
+import dagger.hilt.android.HiltAndroidApp
 
-val applicationModules = listOf(remoteModule)
+//val applicationModules = listOf(remoteModule)
 
+@HiltAndroidApp
 class MainApplication : Application() {
 
     override fun onCreate() {
@@ -17,10 +14,12 @@ class MainApplication : Application() {
     }
 
     private fun setupDependencyInjection() {
-        startKoin {
-            androidLogger(Level.ERROR)
-            androidContext(this@MainApplication)
-            modules(applicationModules)
-        }
+//        startKoin {
+//            androidLogger(Level.ERROR)
+//            androidContext(this@MainApplication)
+//            modules(applicationModules)
+//        }
+
+
     }
 }

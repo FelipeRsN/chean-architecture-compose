@@ -13,18 +13,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import com.felipersn.clean.coin_detail.di.injectFeature
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.felipersn.clean.coin_detail.presentation.components.CoinTag
 import com.felipersn.clean.coin_detail.presentation.components.TeamListItem
 import com.google.accompanist.flowlayout.FlowRow
-import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun CoinListScreen() {
+fun CoinDetailScreen(
+    viewModel: CoinDetailViewModel = hiltViewModel()
+) {
     //viewModel and feature injection as singleton to avoid multiples instances
-    injectFeature()
-    val viewModel = getViewModel<CoinDetailViewModel>()
+    //injectFeature()
+    //val viewModel: CoinDetailViewModel = getStateViewModel { parametersOf(Bundle.EMPTY, "handle") }
     //
 
     val state = viewModel.state.value
@@ -44,7 +44,7 @@ fun CoinListScreen() {
                     ) {
                         Text(
                             text = "${coin.rank}. ${coin.name} (${coin.symbol})",
-                            style = MaterialTheme.typography.h2,
+                            style = MaterialTheme.typography.h4,
                             modifier = Modifier.weight(8f),
                         )
 
@@ -71,7 +71,7 @@ fun CoinListScreen() {
 
                     Text(
                         text = "Tags",
-                        style = MaterialTheme.typography.h3,
+                        style = MaterialTheme.typography.h5,
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -90,7 +90,7 @@ fun CoinListScreen() {
 
                     Text(
                         text = "Team members",
-                        style = MaterialTheme.typography.h3,
+                        style = MaterialTheme.typography.h5,
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))

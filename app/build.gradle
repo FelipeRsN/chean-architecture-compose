@@ -1,6 +1,8 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 apply from: "../common.gradle"
@@ -21,4 +23,11 @@ dependencies {
     /** core **/
     api project(":navigation")
     api project(":core")
+
+    /** Hilt **/
+    api "com.google.dagger:hilt-android:$hilt_version"
+    api "androidx.hilt:hilt-lifecycle-viewmodel:$hiltViewModel_version"
+    api "androidx.hilt:hilt-navigation-compose:$hiltCompose_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    kapt "androidx.hilt:hilt-compiler:$hiltCompiler_version"
 }

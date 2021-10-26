@@ -10,24 +10,27 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import com.felipersn.clean.coin_list.di.injectFeature
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.felipersn.clean.coin_list.presentation.components.CoinListItem
-import com.felipersn.clean.core.common.NavigationUtils
-import org.koin.androidx.compose.getViewModel
+import com.felipersn.clean.navigation.NavigationManager
+import com.felipersn.clean.navigation.NavigationRoutes
+import kotlinx.coroutines.launch
 
 @Composable
 fun CoinListScreen(
-    navController: NavController,
+    viewModel: CoinListViewModel = hiltViewModel()
 ) {
     //viewModel and feature injection as singleton to avoid multiples instances
-    injectFeature()
-    val viewModel = getViewModel<CoinListViewModel>()
+    //injectFeature()
+    //val viewModel = getViewModel<CoinListViewModel>()
     //
+
+    val coroutineScope = rememberCoroutineScope()
 
     val state = viewModel.state.value
 
@@ -41,7 +44,11 @@ fun CoinListScreen(
                 CoinListItem(
                     coin = coin
                 ) {
-                    navController.navigate(NavigationUtils.CoinDetailScreen.route + "/${it.id}")
+                    coroutineScope.launch {
+                        NavigationManager.navigateTo(
+                            "${NavigationRoutes.COIN_DETAIL.get}/${it.id}"
+                        )
+                    }
                 }
             }
         }

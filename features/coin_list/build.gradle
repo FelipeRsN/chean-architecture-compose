@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 apply from: "../../common.gradle"
@@ -12,4 +13,8 @@ dependencies {
     /** core **/
     implementation project(":navigation")
     implementation project(":core")
+
+    /** Hilt kapt **/
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    kapt "androidx.hilt:hilt-compiler:$hiltCompiler_version"
 }
