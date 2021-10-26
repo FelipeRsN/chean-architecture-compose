@@ -1,4 +1,4 @@
-package com.felipersn.clean.repository
+package com.felipersn.clean.repository.repositories
 
 import com.felipersn.clean.domain.repository.CoinRepository
 import com.felipersn.clean.network.dto.CoinDetailDto

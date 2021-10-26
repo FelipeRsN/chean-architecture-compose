@@ -35,10 +35,6 @@ dependencies {
     api "com.squareup.okhttp3:logging-interceptor:$okHttp_version"
 
     /** Dependency injection dependencies **/
-    //koin commented to test hilt DI
-    //api "io.insert-koin:koin-android:$koin_version"
-    //api "io.insert-koin:koin-androidx-compose:$koin_version"
-    //
     api "com.google.dagger:hilt-android:$hilt_version"
     api "androidx.hilt:hilt-lifecycle-viewmodel:$hiltViewModel_version"
     api "androidx.hilt:hilt-navigation-compose:$hiltCompose_version"

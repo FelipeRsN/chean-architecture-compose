@@ -1,9 +1,6 @@
-package com.felipersn.clean.architecture.di
+package com.felipersn.clean.core.di
 
 import com.felipersn.clean.core.common.Constants
-import com.felipersn.clean.domain.repository.CoinRepository
-import com.felipersn.clean.network.services.CoinService
-import com.felipersn.clean.repository.CoinRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,13 +10,17 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object HiltModule {
+object CoreModule {
+
+    /**
+     * Core Module used to generate core features such as interceptors, clients and
+     * Retrofit instance
+     **/
 
     @Provides
     @Singleton
@@ -57,17 +58,5 @@ object HiltModule {
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    }
-
-    @Provides
-    @Singleton
-    fun provideCoinService(retrofit: Retrofit): CoinService {
-        return retrofit.create(CoinService::class.java)
-    }
-
-    @Provides
-    @Singleton
-    fun provideCoinRepository(service: CoinService): CoinRepository {
-        return CoinRepositoryImpl(service)
     }
 }
