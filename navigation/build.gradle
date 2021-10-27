@@ -9,8 +9,4 @@ apply from: "../common.gradle"
 dependencies {
     /** core **/
     implementation project(":core")
-
-    /** Hilt kapt **/
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    kapt "androidx.hilt:hilt-compiler:$hiltCompiler_version"
 }
