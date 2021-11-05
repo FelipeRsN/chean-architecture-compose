@@ -17,8 +17,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.felipersn.clean.coin_list.presentation.components.CoinListItem
-import com.felipersn.clean.navigation.NavigationManager
-import com.felipersn.clean.navigation.routes.CoinDetailRoutes
 import kotlinx.coroutines.launch
 
 @Composable
@@ -37,14 +35,9 @@ fun CoinListScreen(
         ) {
             items(state.coins) { coin ->
                 CoinListItem(
-                    coin = coin
-                ) {
-                    coroutineScope.launch {
-                        NavigationManager.navigateTo(
-                            CoinDetailRoutes.root(coin.id)
-                        )
-                    }
-                }
+                    coin = coin,
+                    onItemClick = viewModel::navigateToDetail
+                )
             }
         }
 

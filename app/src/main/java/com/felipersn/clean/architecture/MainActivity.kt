@@ -7,7 +7,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -15,16 +14,20 @@ import androidx.navigation.compose.rememberNavController
 import com.felipersn.clean.architecture.ui.theme.Clean_architecture_composeTheme
 import com.felipersn.clean.coin_detail.presentation.CoinDetailScreen
 import com.felipersn.clean.coin_list.presentation.CoinListScreen
-import com.felipersn.clean.core.common.Constants
 import com.felipersn.clean.navigation.NavigationManager
 import com.felipersn.clean.navigation.routes.CoinDetailRoutes
 import com.felipersn.clean.navigation.routes.CoinListRoutes
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var navigationManager: NavigationManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,6 +38,7 @@ class MainActivity : ComponentActivity() {
 
                     HandlerNavigationTrigger(
                         navController = navController,
+                        navigationManager = navigationManager
                     )
 
                     NavHost(
@@ -63,6 +67,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun HandlerNavigationTrigger(
     navController: NavController,
+    navigationManager: NavigationManager,
 ) {
     var launchedEffectSetupDone by rememberSaveable { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
@@ -71,7 +76,7 @@ fun HandlerNavigationTrigger(
         LaunchedEffect(Unit) {
             launchedEffectSetupDone = true
             coroutineScope.launch {
-                NavigationManager.navigationTrigger.collect { navCommand ->
+                navigationManager.navigationTrigger.collect { navCommand ->
                     if (navCommand.navigatorRoute.isNotEmpty()) {
                         navController.navigate(navCommand.navigatorRoute)
                     }

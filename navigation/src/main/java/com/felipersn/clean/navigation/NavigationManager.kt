@@ -2,7 +2,7 @@ package com.felipersn.clean.navigation
 
 import kotlinx.coroutines.flow.MutableSharedFlow
 
-object NavigationManager {
+class NavigationManager {
     var navigationTrigger = MutableSharedFlow<NavigationDestination>()
 
     suspend fun navigateTo(direction: NavigationDestination) {
