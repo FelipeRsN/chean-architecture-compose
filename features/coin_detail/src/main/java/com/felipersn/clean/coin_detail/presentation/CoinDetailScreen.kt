@@ -22,11 +22,6 @@ import com.google.accompanist.flowlayout.FlowRow
 fun CoinDetailScreen(
     viewModel: CoinDetailViewModel = hiltViewModel()
 ) {
-    //viewModel and feature injection as singleton to avoid multiples instances
-    //injectFeature()
-    //val viewModel: CoinDetailViewModel = getStateViewModel { parametersOf(Bundle.EMPTY, "handle") }
-    //
-
     val state = viewModel.state.value
 
     Box(

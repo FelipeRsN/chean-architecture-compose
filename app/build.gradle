@@ -13,7 +13,7 @@ dependencies {
     implementation project(":features:coin_list")
 
     /** domain **/
-    implementation project(":domain")
+    api project(":domain")
 
     /** data **/
     api project(":data:repository")

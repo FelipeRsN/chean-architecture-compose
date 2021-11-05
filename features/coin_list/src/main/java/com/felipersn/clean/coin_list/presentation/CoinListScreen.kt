@@ -18,18 +18,13 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.felipersn.clean.coin_list.presentation.components.CoinListItem
 import com.felipersn.clean.navigation.NavigationManager
-import com.felipersn.clean.navigation.NavigationRoutes
+import com.felipersn.clean.navigation.routes.CoinDetailRoutes
 import kotlinx.coroutines.launch
 
 @Composable
 fun CoinListScreen(
     viewModel: CoinListViewModel = hiltViewModel()
 ) {
-    //viewModel and feature injection as singleton to avoid multiples instances
-    //injectFeature()
-    //val viewModel = getViewModel<CoinListViewModel>()
-    //
-
     val coroutineScope = rememberCoroutineScope()
 
     val state = viewModel.state.value
@@ -46,7 +41,7 @@ fun CoinListScreen(
                 ) {
                     coroutineScope.launch {
                         NavigationManager.navigateTo(
-                            "${NavigationRoutes.COIN_DETAIL.get}/${it.id}"
+                            CoinDetailRoutes.root(coin.id)
                         )
                     }
                 }

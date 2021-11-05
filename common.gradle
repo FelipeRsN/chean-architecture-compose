@@ -91,7 +91,7 @@ android {
     }
 }
 
-dependencies{
+dependencies {
     /** Hilt **/
     implementation "com.google.dagger:hilt-android:$hilt_version"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltViewModel_version"

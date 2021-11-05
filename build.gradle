@@ -11,9 +11,11 @@ buildscript {
         appCompat_version = '1.3.1'
         material_version = '1.4.0'
         lifeCycle_version = '2.3.1'
+        playCore_version = '1.10.2'
+        playCoreKtx_version = '1.8.1'
 
         /** compose Version **/
-        compose_version = '1.1.0-alpha06'
+        compose_version = '1.1.0-beta01'
         activityCompose_version = '1.4.0-rc01'
         navComposeVersion = '2.4.0-alpha10'
         accompanistVersion = '0.20.0'
