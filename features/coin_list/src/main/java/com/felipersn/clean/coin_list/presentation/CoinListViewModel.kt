@@ -5,15 +5,21 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.felipersn.clean.core.common.Resource
+import com.felipersn.clean.domain.model.Coin
 import com.felipersn.clean.domain.usecases.get_coin_list.GetCoinListUseCase
+import com.felipersn.clean.navigation.NavigationManager
+import com.felipersn.clean.navigation.routes.CoinDetailRoutes
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class CoinListViewModel @Inject constructor(
-    private val getCoinListUseCase: GetCoinListUseCase
+    private val getCoinListUseCase: GetCoinListUseCase,
+    private val navigationManager: NavigationManager
 ) : ViewModel() {
 
     private val _state = mutableStateOf(CoinListState())
@@ -37,5 +43,11 @@ class CoinListViewModel @Inject constructor(
                 }
             }
         }.launchIn(viewModelScope)
+    }
+
+    fun navigateToDetail(coin: Coin) {
+        viewModelScope.launch {
+            navigationManager.navigateTo(CoinDetailRoutes.root(coin.id))
+        }
     }
 }
