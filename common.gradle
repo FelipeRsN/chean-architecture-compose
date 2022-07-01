@@ -12,14 +12,15 @@ def gradleVersionCode = versionMajor * 10000 + versionMinor * 1000 + versionPatc
 def gradleVersionName = "$versionMajor.$versionMinor.$versionPatch"
 
 //compile sdk
-def gradleCompileSdk = 31
-def gradleMinSdk = 21
+def gradleCompileSdk = 32
+def gradleMinSdk = 24
 def gradleTargetSdk = gradleCompileSdk
 
 def gradleApplicationId = "com.felipersn.clean.architecture"
 def gradleTestInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
 android {
+    namespace gradleApplicationId
     compileSdk gradleCompileSdk
 
     defaultConfig {
@@ -71,7 +72,6 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
-        useIR = true
     }
 
     /** Enable and configure Jetpack Compose **/
@@ -91,6 +91,7 @@ android {
     }
 }
 
+/** Common dependencies **/
 dependencies {
     /** Hilt **/
     implementation "com.google.dagger:hilt-android:$hilt_version"
