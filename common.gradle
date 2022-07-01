@@ -20,7 +20,7 @@ def gradleApplicationId = "com.felipersn.clean.architecture"
 def gradleTestInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
 android {
-    namespace gradleApplicationId
+    if (this.name == "app") namespace gradleApplicationId
     compileSdk gradleCompileSdk
 
     defaultConfig {
@@ -64,14 +64,14 @@ android {
         }
     }
 
-    /** Enable and configure Java 1.8 **/
+    /** Enable and configure Java 11 **/
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 
     /** Enable and configure Jetpack Compose **/
@@ -96,16 +96,19 @@ dependencies {
     /** Hilt **/
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "androidx.hilt:hilt-compiler:$hiltCompiler_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
-    /** Instrumentation test */
+    /** Instrumentation test **/
     androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     kaptAndroidTest "com.google.dagger:hilt-compiler:$hilt_version"
 
-    /** Local unit tests */
+    /** Local unit tests **/
     testImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     kaptTest "com.google.dagger:hilt-compiler:$hilt_version"
 
-    /** Compose */
+
+
+    /** Compose **/
     implementation "androidx.hilt:hilt-navigation-compose:$hiltCompose_version"
 }
 
