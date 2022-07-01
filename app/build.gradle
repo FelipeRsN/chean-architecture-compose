@@ -1,88 +1,26 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
-android {
-    compileSdk 31
-
-    defaultConfig {
-        applicationId "com.felipersn.clean.architecture"
-        minSdk 21
-        targetSdk 31
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-        useIR = true
-    }
-    buildFeatures {
-        compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion "1.5.21"
-    }
-    packagingOptions {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
-}
+apply from: "../common.gradle"
 
 dependencies {
-    /** Android and kotlin implementation **/
-    api "androidx.core:core-ktx:$ktx_version"
-    api "androidx.appcompat:appcompat:$appCompat_version"
-    api "com.google.android.material:material:$material_version"
-    api "androidx.lifecycle:lifecycle-runtime-ktx:$lifeCycle_version"
+    /** Features **/
+    implementation project(":features:coin_detail")
+    implementation project(":features:coin_list")
 
-    /** Compose **/
-    api "androidx.compose.ui:ui:$compose_version"
-    api "androidx.compose.material:material:$compose_version"
-    api "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    api "androidx.activity:activity-compose:$activityCompose_version"
+    /** domain **/
+    api project(":domain")
 
-    /** Coroutines dependencies **/
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesCore_version"
+    /** data **/
+    api project(":data:repository")
+    api project(":data:network")
+    api project(":data:cache")
 
-    /** Retrofit and Gson dependencies **/
-    api "com.squareup.retrofit2:retrofit:$retrofit_version"
-    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
-
-    /** OkHttp and logging interceptor dependencies **/
-    api "com.squareup.okhttp3:okhttp:$okHttp_version"
-    api "com.squareup.okhttp3:logging-interceptor:$okHttp_version"
-
-    /** Dependency injection dependencies **/
-    api "io.insert-koin:koin-android:$koin_version"
-
-    /** Test dependencies **/
-    // JUnit
-    testImplementation "junit:junit:$junit_version"
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
-    // Mockito Kotlin
-    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlin_version"
-    // Espresso
-    androidTestImplementation "androidx.test:runner:$testRunner_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    /** core **/
+    api project(":navigation")
+    api project(":core")
 }

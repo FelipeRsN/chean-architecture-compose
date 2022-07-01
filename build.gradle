@@ -1,33 +1,37 @@
 buildscript {
     ext {
         /** Gradle Version **/
-        gradle_version = '7.0.2'
+        gradle_version = '7.4.0-alpha07'
 
         /** Kotlin Version **/
-        kotlin_version = '1.5.21'
-        ktx_version = '1.6.0'
+        kotlin_version = '1.6.21'
+        ktx_version = '1.8.0'
 
         /** Android version **/
-        appCompat_version = '1.3.1'
-        material_version = '1.4.0'
-        lifeCycle_version = '2.3.1'
+        appCompat_version = '1.4.2'
+        material_version = '1.6.1'
+        lifeCycle_version = '2.4.1'
 
         /** compose Version **/
-        compose_version = '1.1.0-alpha05'
-        activityCompose_version = '1.4.0-beta01'
+        compose_version = '1.2.0-rc02'
+        activityCompose_version = '1.6.0-alpha05'
+        navComposeVersion = '2.5.0-rc02'
+        accompanistVersion = '0.24.13-rc'
 
         /** Coroutines Version **/
-        coroutines_version = "1.5.1"
+        coroutines_version = "1.6.1"
         coroutinesCore_version = "1.4.1"
 
         /** Retrofit and Gson Version **/
-        retrofit_version = "2.7.2"
+        retrofit_version = "2.9.0"
 
         /** OkHttp and logging interceptor Version **/
         okHttp_version = "4.4.0"
 
         /** Dependency injection Version **/
-        koin_version = "3.1.2"
+        hilt_version = "2.41"
+        hiltCompose_version = "1.0.0"
+        hiltCompiler_version = "1.0.0"
 
         /** Test Version **/
         junit_version = "4.13.2"
@@ -35,16 +39,11 @@ buildscript {
         testRunner_version = "1.4.0"
         espresso_version = "3.4.0"
     }
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath "com.android.tools.build:gradle:$gradle_version"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+plugins {
+    id "com.android.application" version "$gradle_version" apply false
+    id "com.android.library" version "$gradle_version" apply false
+    id "org.jetbrains.kotlin.android" version "$kotlin_version" apply false
+    id "com.google.dagger.hilt.android" version "$hilt_version" apply false
 }

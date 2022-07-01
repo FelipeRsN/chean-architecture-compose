@@ -1,0 +1,117 @@
+/**
+ * common gradle configuration used on app gradle modules
+ **/
+
+/** gradle Variables **/
+//app version
+def versionMajor = 0
+def versionMinor = 0
+def versionPatch = 1
+
+def gradleVersionCode = versionMajor * 10000 + versionMinor * 1000 + versionPatch
+def gradleVersionName = "$versionMajor.$versionMinor.$versionPatch"
+
+//compile sdk
+def gradleCompileSdk = 32
+def gradleMinSdk = 24
+def gradleTargetSdk = gradleCompileSdk
+
+def gradleApplicationId = "com.felipersn.clean.architecture"
+def gradleTestInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+android {
+    if (this.name == "app") namespace gradleApplicationId
+    compileSdk gradleCompileSdk
+
+    defaultConfig {
+        /** add ApplicationId only in application module **/
+        if (this.name == "app") applicationId gradleApplicationId
+        minSdk gradleMinSdk
+        targetSdk gradleTargetSdk
+        versionCode gradleVersionCode
+        versionName gradleVersionName
+
+        testInstrumentationRunner gradleTestInstrumentationRunner
+
+        /** enable vector drawables **/
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    /** buildTypes **/
+    buildTypes {
+        release {
+            /** Set the minify, shrink and proguard configuration only in application module **/
+            if (this.name == "app") {
+                minifyEnabled true
+                shrinkResources true
+
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+                //signingConfig signingConfigs.keyStoreInfo
+            }
+
+            /** Enable/Disable crashlytics **/
+            //manifestPlaceholders = [crashlyticsEnabled: true]
+        }
+
+        debug {
+            /** optimize build time **/
+            ext.alwaysUpdateBuildId = false
+
+            /** Enable/Disable crashlytics **/
+            //manifestPlaceholders = [crashlyticsEnabled: false]
+        }
+    }
+
+    /** Enable and configure Java 11 **/
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+
+    /** Enable and configure Jetpack Compose **/
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
+
+    /** packaging Options **/
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+}
+
+/** Common dependencies **/
+dependencies {
+    /** Hilt **/
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "androidx.hilt:hilt-compiler:$hiltCompiler_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    /** Instrumentation test **/
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    kaptAndroidTest "com.google.dagger:hilt-compiler:$hilt_version"
+
+    /** Local unit tests **/
+    testImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    kaptTest "com.google.dagger:hilt-compiler:$hilt_version"
+
+
+
+    /** Compose **/
+    implementation "androidx.hilt:hilt-navigation-compose:$hiltCompose_version"
+}
+
+kapt {
+    correctErrorTypes true
+}

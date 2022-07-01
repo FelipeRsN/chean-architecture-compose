@@ -1,10 +1,26 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
     }
 }
 rootProject.name = "clean_architecture_compose"
 include ':app'
+include ':core'
+include ':domain'
+include ':features'
+include ':features:coin_detail'
+include ':features:coin_list'
+include ':data'
+include ':data:cache'
+include ':data:repository'
+include ':data:network'
+include ':navigation'

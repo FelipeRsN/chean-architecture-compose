@@ -1,3 +1,4 @@
+
 package com.felipersn.clean.architecture.ui.theme
 
 import androidx.compose.ui.graphics.Color

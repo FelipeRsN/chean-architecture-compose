@@ -1,0 +1,17 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+apply from: "../common.gradle"
+
+dependencies {
+    /** data **/
+    api project(":data:network")
+    api project(":data:cache")
+
+    /** core **/
+    implementation project(":core")
+
+}
