@@ -30,8 +30,7 @@ buildscript {
 
         /** Dependency injection Version **/
         hilt_version = "2.41"
-        hiltViewModel_version = "1.0.0-alpha03"
-        hiltCompose_version = "1.0.0-alpha03"
+        hiltCompose_version = "1.0.0"
         hiltCompiler_version = "1.0.0"
 
         /** Test Version **/

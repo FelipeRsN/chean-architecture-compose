@@ -95,8 +95,20 @@ android {
 dependencies {
     /** Hilt **/
     implementation "com.google.dagger:hilt-android:$hilt_version"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltViewModel_version"
-    implementation "androidx.hilt:hilt-navigation-compose:$hiltCompose_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     kapt "androidx.hilt:hilt-compiler:$hiltCompiler_version"
+
+    /** Instrumentation test */
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    kaptAndroidTest "com.google.dagger:hilt-compiler:$hilt_version"
+
+    /** Local unit tests */
+    testImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    kaptTest "com.google.dagger:hilt-compiler:$hilt_version"
+
+    /** Compose */
+    implementation "androidx.hilt:hilt-navigation-compose:$hiltCompose_version"
+}
+
+kapt {
+    correctErrorTypes true
 }
