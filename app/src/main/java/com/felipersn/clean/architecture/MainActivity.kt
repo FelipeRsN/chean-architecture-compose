@@ -18,7 +18,6 @@ import com.felipersn.clean.navigation.NavigationManager
 import com.felipersn.clean.navigation.routes.CoinDetailRoutes
 import com.felipersn.clean.navigation.routes.CoinListRoutes
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

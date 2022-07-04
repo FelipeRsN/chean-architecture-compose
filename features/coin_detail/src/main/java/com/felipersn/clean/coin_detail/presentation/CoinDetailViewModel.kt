@@ -5,10 +5,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.felipersn.clean.core.common.Constants
-import com.felipersn.clean.core.common.Resource
-import com.felipersn.clean.domain.usecases.get_coin_detail.GetCoinUseCase
-import com.felipersn.clean.navigation.NavigationManager
+import com.felipersn.core.utils.Constants
+import com.felipersn.core.utils.Resource
+import com.felipersn.domain.usecase.get_coin_detail.GetCoinUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -17,7 +16,6 @@ import javax.inject.Inject
 @HiltViewModel
 class CoinDetailViewModel @Inject constructor(
     private val getCoinUseCase: GetCoinUseCase,
-    private val navigationManager: NavigationManager,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 

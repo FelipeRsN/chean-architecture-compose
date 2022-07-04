@@ -8,9 +8,9 @@ apply from: "../../common.gradle"
 
 dependencies {
     /** domain **/
-    api project(":domain")
+    implementation project(":domain:repository")
 
-    /** core **/
-    implementation project(":core")
-
+    /** data **/
+    implementation project(":data:network")
+    implementation project(":data:cache")
 }

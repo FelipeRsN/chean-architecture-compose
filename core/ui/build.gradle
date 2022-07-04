@@ -1,0 +1,29 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+apply from: "../../common.gradle"
+
+dependencies {
+    /** Android and kotlin implementation **/
+    api "androidx.core:core-ktx:$ktx_version"
+    api "androidx.appcompat:appcompat:$appCompat_version"
+    api "com.google.android.material:material:$material_version"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$lifeCycle_version"
+
+    /** Compose **/
+    api "androidx.compose.ui:ui:$compose_version"
+    api "androidx.compose.material:material:$compose_version"
+    api "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    api "androidx.activity:activity-compose:$activityCompose_version"
+    api "androidx.navigation:navigation-compose:$navComposeVersion"
+    api "com.google.accompanist:accompanist-flowlayout:$accompanistVersion"
+
+    /** Test dependencies **/
+    debugApi "androidx.compose.ui:ui-tooling:$compose_version"
+    androidTestApi "androidx.compose.ui:ui-test-junit4:$compose_version"
+    androidTestApi "androidx.test:runner:$testRunner_version"
+    androidTestApi "androidx.test.espresso:espresso-core:$espresso_version"
+}

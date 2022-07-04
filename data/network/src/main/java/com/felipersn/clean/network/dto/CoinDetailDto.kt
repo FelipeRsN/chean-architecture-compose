@@ -1,5 +1,7 @@
 package com.felipersn.clean.network.dto
 
+import com.felipersn.domain.model.CoinDetail
+import com.felipersn.domain.model.TeamMember
 import com.google.gson.annotations.SerializedName
 
 data class CoinDetailDto(
@@ -81,4 +83,23 @@ data class TagDto(
 data class WhitepaperDto(
     val link: String? = "",
     val thumbnail: String? = ""
+)
+
+fun CoinDetailDto.toCoinDetail(): CoinDetail {
+    return CoinDetail(
+        coinId = this.id,
+        description = this.description,
+        symbol = this.symbol,
+        rank = this.rank,
+        isActive = this.isActive,
+        name = this.name,
+        team = this.team?.map { it.toTeamMember() },
+        tags = this.tags?.map { it.name ?: "" }
+    )
+}
+
+fun TeamMemberDto.toTeamMember(): TeamMember = TeamMember(
+    memberId = this.id,
+    name = this.name,
+    position = this.position
 )

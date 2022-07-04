@@ -7,11 +7,16 @@ plugins {
 apply from: "../../common.gradle"
 
 dependencies {
-    /** data **/
-    implementation project(":data:repository")
+    /** use cases **/
+    implementation project(":domain:usecase")
+    implementation project(":domain:model")
 
     /** core **/
-    implementation project(":navigation")
-    implementation project(":core")
+    implementation project(":core:ui")
+    implementation project(":core:extension")
+    implementation project(":core:utils")
+    implementation project(":core:common")
 
+    /** navigation **/
+    implementation project(":navigation")
 }

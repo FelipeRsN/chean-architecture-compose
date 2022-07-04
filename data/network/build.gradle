@@ -7,7 +7,14 @@ plugins {
 apply from: "../../common.gradle"
 
 dependencies {
-    /** core **/
-    implementation project(":core")
+    implementation project(":domain:model")
 
+
+    /** Retrofit and Gson dependencies **/
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    /** OkHttp and logging interceptor dependencies **/
+    api "com.squareup.okhttp3:okhttp:$okHttp_version"
+    api "com.squareup.okhttp3:logging-interceptor:$okHttp_version"
 }
