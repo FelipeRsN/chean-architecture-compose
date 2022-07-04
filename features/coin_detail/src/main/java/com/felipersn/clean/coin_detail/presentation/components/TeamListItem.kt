@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
-import com.felipersn.clean.domain.model.TeamMember
+import com.felipersn.domain.model.TeamMember
 
 @Composable
 fun TeamListItem(

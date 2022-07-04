@@ -7,7 +7,7 @@ plugins {
 apply from: "../../common.gradle"
 
 dependencies {
-    /** core **/
-    implementation project(":core")
+    implementation project(":domain:model")
 
+    //cache dependencies
 }

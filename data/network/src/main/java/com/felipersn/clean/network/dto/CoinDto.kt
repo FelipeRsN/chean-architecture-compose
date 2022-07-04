@@ -1,5 +1,6 @@
 package com.felipersn.clean.network.dto
 
+import com.felipersn.domain.model.Coin
 import com.google.gson.annotations.SerializedName
 
 data class CoinDto(
@@ -12,4 +13,12 @@ data class CoinDto(
     val rank: Int,
     val symbol: String,
     val type: String
+)
+
+fun CoinDto.toCoin(): Coin = Coin(
+    id = this.id,
+    isActive = this.isActive,
+    name = this.name,
+    rank = this.rank,
+    symbol = this.symbol,
 )

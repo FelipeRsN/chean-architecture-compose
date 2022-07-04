@@ -3,6 +3,7 @@ plugins {
     id "kotlin-android"
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+
 }
 
 apply from: "../common.gradle"
@@ -12,8 +13,13 @@ dependencies {
     implementation project(":features:coin_detail")
     implementation project(":features:coin_list")
 
+    /** di **/
+    implementation project(":di")
+
     /** domain **/
-    api project(":domain")
+    api project(":domain:model")
+    api project(":domain:repository")
+    api project(":domain:usecase")
 
     /** data **/
     api project(":data:repository")
@@ -21,6 +27,15 @@ dependencies {
     api project(":data:cache")
 
     /** core **/
+    api project(":core:utils")
+    api project(":core:common")
+    api project(":core:ui")
+    api project(":core:extension")
+
+    /** navigation **/
     api project(":navigation")
-    api project(":core")
+}
+
+kapt {
+    correctErrorTypes true
 }

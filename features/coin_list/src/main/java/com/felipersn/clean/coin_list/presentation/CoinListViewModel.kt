@@ -4,13 +4,11 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.felipersn.clean.core.common.Resource
-import com.felipersn.clean.domain.model.Coin
-import com.felipersn.clean.domain.usecases.get_coin_list.GetCoinListUseCase
 import com.felipersn.clean.navigation.NavigationManager
 import com.felipersn.clean.navigation.routes.CoinDetailRoutes
+import com.felipersn.domain.model.Coin
+import com.felipersn.domain.usecase.get_coin_list.GetCoinListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -32,13 +30,13 @@ class CoinListViewModel @Inject constructor(
     private fun getCoins() {
         getCoinListUseCase().onEach { result ->
             when (result) {
-                is Resource.Success -> {
+                is com.felipersn.core.utils.Resource.Success -> {
                     _state.value = CoinListState(coins = result.data ?: emptyList())
                 }
-                is Resource.Loading -> {
+                is com.felipersn.core.utils.Resource.Loading -> {
                     _state.value = CoinListState(isLoading = true)
                 }
-                is Resource.Error -> {
+                is com.felipersn.core.utils.Resource.Error -> {
                     _state.value = CoinListState(error = result.exception)
                 }
             }
