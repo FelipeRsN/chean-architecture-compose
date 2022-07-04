@@ -8,6 +8,4 @@ apply from: "../../common.gradle"
 
 dependencies {
     implementation project(":domain:model")
-
-    //cache dependencies
 }
