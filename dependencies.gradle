@@ -1,0 +1,53 @@
+ext {
+    uiDependencies = [
+            /** Android and kotlin dependencies **/
+            ktx              : "androidx.core:core-ktx:$ktx_version",
+            appCompat        : "androidx.appcompat:appcompat:$appCompat_version",
+            material         : "com.google.android.material:material:$material_version",
+            lifecycle        : "androidx.lifecycle:lifecycle-runtime-ktx:$lifeCycle_version",
+
+            /** Compose dependencies **/
+            compose          : "androidx.compose.ui:ui:$compose_version",
+            composeMaterial  : "androidx.compose.material:material:$compose_version",
+            composeTooling   : "androidx.compose.ui:ui-tooling-preview:$compose_version",
+            activityCompose  : "androidx.activity:activity-compose:$activityCompose_version",
+            navigationCompose: "androidx.navigation:navigation-compose:$navComposeVersion",
+            accompanistFlow  : "com.google.accompanist:accompanist-flowlayout:$accompanistVersion",
+    ]
+
+    networkDependencies = [
+            retrofit   : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            gson       : "com.squareup.retrofit2:converter-gson:$retrofit_version",
+            okHttp     : "com.squareup.okhttp3:okhttp:$okHttp_version",
+            interceptor: "com.squareup.okhttp3:logging-interceptor:$okHttp_version",
+    ]
+
+    commonDependencies = [
+            /** Coroutines dependencies **/
+            coroutines    : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version",
+            coroutinesCore: "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesCore_version",
+
+            /** Hilt dependencies **/
+            hilt          : "com.google.dagger:hilt-android:$hilt_version",
+            hiltCompose   : "androidx.hilt:hilt-navigation-compose:$hiltCompose_version",
+    ]
+
+    kaptDependencies = [
+            hiltCompiler       : "androidx.hilt:hilt-compiler:$hiltCompiler_version",
+            hiltAndroidCompiler: "com.google.dagger:hilt-android-compiler:$hilt_version",
+    ]
+
+    androidTestDependencies = [
+            composeTooling: "androidx.compose.ui:ui-tooling:$compose_version",
+            composeJunit  : "androidx.compose.ui:ui-test-junit4:$compose_version",
+            testRunner    : "androidx.test:runner:$testRunner_version",
+            espresso      : "androidx.test.espresso:espresso-core:$espresso_version",
+    ]
+
+    testDependencies = [
+            jUnit         : "junit:junit:$junit_version",
+            mockito       : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlin_version",
+            hiltAndroid   : "com.google.dagger:hilt-android-testing:$hilt_version",
+            hiltCompiler  : "com.google.dagger:hilt-compiler:$hilt_version",
+    ]
+}
