@@ -7,6 +7,11 @@ plugins {
 apply from: "../../common.gradle"
 apply from: "../../dependencies.gradle"
 
+
+android{
+    namespace "com.felipersn.clean.architecture.data.network"
+}
+
 dependencies {
     implementation project(":domain:model")
 

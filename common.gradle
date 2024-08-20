@@ -12,7 +12,7 @@ def gradleVersionCode = versionMajor * 10000 + versionMinor * 1000 + versionPatc
 def gradleVersionName = "$versionMajor.$versionMinor.$versionPatch"
 
 //compile sdk
-def gradleCompileSdk = 32
+def gradleCompileSdk = 34
 def gradleMinSdk = 24
 def gradleTargetSdk = gradleCompileSdk
 
@@ -82,7 +82,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerExtensionVersion compose_compiler
     }
 
     /** packaging Options **/

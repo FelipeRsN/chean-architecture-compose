@@ -7,6 +7,10 @@ plugins {
 apply from: "../../common.gradle"
 apply from: "../../dependencies.gradle"
 
+android{
+    namespace "com.felipersn.clean.architecture.core.ui"
+}
+
 dependencies {
     api uiDependencies.values()
 

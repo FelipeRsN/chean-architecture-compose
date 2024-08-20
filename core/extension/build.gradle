@@ -5,3 +5,7 @@ plugins {
 }
 
 apply from: "../../common.gradle"
+
+android{
+    namespace "com.felipersn.clean.architecture.core.extension"
+}

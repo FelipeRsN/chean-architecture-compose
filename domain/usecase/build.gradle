@@ -6,6 +6,11 @@ plugins {
 
 apply from: "../../common.gradle"
 
+android{
+    namespace "com.felipersn.clean.architecture.domain.usecase"
+}
+
+
 dependencies {
     /** domain **/
     implementation project(":domain:model")

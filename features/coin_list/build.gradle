@@ -6,6 +6,11 @@ plugins {
 
 apply from: "../../common.gradle"
 
+android{
+    namespace "com.felipersn.clean.architecture.features.coin_list"
+}
+
+
 dependencies {
     /** use cases **/
     implementation project(":domain:usecase")

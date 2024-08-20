@@ -4,4 +4,8 @@ plugins {
     id 'kotlin-kapt'
 }
 
+android{
+    namespace "com.felipersn.clean.architecture.domain.model"
+}
+
 apply from: "../../common.gradle"

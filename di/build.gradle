@@ -6,6 +6,10 @@ plugins {
 
 apply from: "../common.gradle"
 
+android{
+    namespace "com.felipersn.clean.architecture.di"
+}
+
 dependencies {
     /** core **/
     implementation project(":data:network")

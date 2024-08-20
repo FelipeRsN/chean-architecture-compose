@@ -6,6 +6,10 @@ plugins {
 
 apply from: "../../common.gradle"
 
+android{
+    namespace "com.felipersn.clean.architecture.data.repository"
+}
+
 dependencies {
     /** domain **/
     implementation project(":domain:repository")

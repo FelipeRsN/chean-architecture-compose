@@ -6,6 +6,10 @@ plugins {
 
 apply from: "../common.gradle"
 
+android{
+    namespace "com.felipersn.clean.architecture.navigation"
+}
+
 dependencies {
     implementation project(":core:utils")
     implementation project(":core:extension")
